@@ -73,5 +73,8 @@ dfs = [process_file(file_name) for file_name in file_names]
 # concatenate all the DataFrames into a single DataFrame
 df_all = pd.concat(dfs)
 
+
+df_all[["County", "State"]] = df_all["County"].str.split(",", expand=True)
+df_all["State"] = df_all["State"].str.strip()
 # save df_all to csv
 df_all.to_csv("mortality.csv", index=False)

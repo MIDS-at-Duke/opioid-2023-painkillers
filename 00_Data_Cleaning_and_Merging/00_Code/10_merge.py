@@ -416,3 +416,10 @@ merged
 #shipments
 #shipments.isna().sum()
 
+
+
+merged['MME Rate'] = merged['MME']/merged['Population']
+
+merged['MME Rate'] = merged.groupby(['STATE', 'Year'])['MME Rate'].transform(lambda x: x.fillna(x.mean()))
+
+merged.to_csv('../20_Merge_Data/merged.csv', index=False)

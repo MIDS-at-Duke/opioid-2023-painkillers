@@ -34,87 +34,40 @@ florida = df[df.STATE == "Florida"]
 before_policy_florida = florida[
     florida.Year < 2010
 ]  # subsetting the data before the the policy
-after_policy_florida = florida[
-    florida.Year >= 2010
-]  # a subset of the data after the policy was passed
 
-# Plotting the Shipments in Florida before the policy was made
+
+# States =  "Ohio","Colorado","Rhode Island","South Carolina","Georgia"
+
+Ohio = df[df.STATE == "Ohio"]
+Ohio_before_policy = Ohio[Ohio.Year < 2010]
+
+Colorado = df[df.STATE == "Colorado"]
+Colorado_before_policy = Colorado[Colorado.Year < 2010]
+
+
+Rhode_island = df[df.STATE == "Rhode Island"]
+Rhode_island_before_policy = Rhode_island[Rhode_island.Year < 2010]
+
+South_carolina = df[df.STATE == "South Carolina"]
+South_carolina_before_policy = South_carolina[South_carolina.Year < 2010]
+
+Georgia = df[df.STATE == "Georgia"]
+Georgia_before_policy = Georgia[Georgia.Year < 2010]
+
+# comparing MME in Florida vs Ohio
 
 (
     ggplot()
     + geom_smooth(
         before_policy_florida, aes("Year", "MME Rate"), method="lm", color="red"
     )
-    + geom_vline(xintercept=2010, linetype="dotted")
-    + xlab("Year")
-    + ylab("MME Rate")
-    + labs(title="MME Rate in Florida Before the Policy")
-    + theme_bw()
-)
-
-# Plotting the Deaths in Florida before the policy was made
-
-(
-    ggplot()
     + geom_smooth(
-        before_policy_florida, aes("Year", "Deaths"), method="lm", color="red"
-    )
-    + geom_vline(xintercept=2010, linetype="dotted")
-    + xlab("Year")
-    + ylab("Deaths")
-    + labs(title="Deaths in Florida Before the Policy was made")
-    + theme_bw()
-)
-
-# Control State for Florida
-
-state_list = [
-    "Ohio",
-    "Colorado",
-    "Rhode Island",
-    "South Carolina",
-    "Georgia",
-]  # using these states as control state for Florida
-
-con_state = df[df.STATE.isin(state_list)]
-bf_1 = con_state[con_state.Year < 2010]
-
-# Plotting the Shipments in Florida before the policy was made
-
-(
-    ggplot()
-    + geom_smooth(bf_1, aes("Year", "MME Rate"), method="lm", color="blue")
-    + geom_vline(xintercept=2010, linetype="dotted")
-    + xlab("Year")
-    + ylab("MME Rate")
-    + labs(title="MME Rate of Control States Before the Policy was made")
-    + theme_bw()
-)
-
-# Plotting the Deaths in Florida before the policy was made
-
-(
-    ggplot()
-    + geom_smooth(bf_1, aes("Year", "Deaths"), method="lm", color="blue")
-    + geom_vline(xintercept=2010, linetype="dotted")
-    + xlab("Year")
-    + ylab("Deaths")
-    + labs(title="Deaths in Control States Before the Policy was made")
-    + theme_bw()
-)
-
-# comparing MME in FLorida vs Control State
-
-(
-    ggplot()
-    + geom_smooth(bf_1, aes("Year", "MME Rate"), method="lm", color="blue")
-    + geom_smooth(
-        before_policy_florida, aes("Year", "MME Rate"), method="lm", color="red"
+        Ohio_before_policy, aes("Year", "MME Rate"), method="lm", color="blue"
     )
     + geom_vline(xintercept=2010, linetype="dotted")
     + xlab("Year")
     + ylab("MME Rate")
-    + labs(title="MME Rate in Florida Before the Policy was made")
+    + labs(title="MME Rate in Florida vs Ohio Before the Policy was made")
     + scale_x_continuous(
         breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
         limits=[2006, 2010],
@@ -122,113 +75,269 @@ bf_1 = con_state[con_state.Year < 2010]
     + theme_bw()
 )
 
-
-# comparing Deaths in FLorida vs Control State
+# comparing Deaths in Florida vs Ohio
 
 (
     ggplot()
-    + geom_smooth(bf_1, aes("Year", "Deaths"), method="lm", color="blue")
     + geom_smooth(
         before_policy_florida, aes("Year", "Deaths"), method="lm", color="red"
+    )
+    + geom_smooth(Ohio_before_policy, aes("Year", "Deaths"), method="lm", color="blue")
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("Deaths")
+    + labs(title="Deaths in Florida vs Ohio Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing MME in FLorida vs Colorado
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "MME Rate"), method="lm", color="red"
+    )
+    + geom_smooth(
+        Colorado_before_policy, aes("Year", "MME Rate"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("MME Rate")
+    + labs(title="MME Rate in Florida vs Colorado Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing Deaths in FLorida vs Colorado
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "Deaths"), method="lm", color="red"
+    )
+    + geom_smooth(
+        Colorado_before_policy, aes("Year", "Deaths"), method="lm", color="blue"
     )
     + geom_vline(xintercept=2010, linetype="dotted")
     + xlab("Year")
     + ylab("Deaths")
-    + labs(title="Deaths in Florida vs Control States before the Policy")
+    + labs(title="Deaths in Florida vs Colorado Before the Policy was made")
     + scale_x_continuous(
-        breaks=[
-            2003,
-            2004,
-            2005,
-            2006,
-            2007,
-            2008,
-            2009,
-            2010],
-        limits=[2003, 2010],
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing MME in Florida vs Rhode Island
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "MME Rate"), method="lm", color="red"
+    )
+    + geom_smooth(
+        Rhode_island_before_policy, aes("Year", "MME Rate"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("MME Rate")
+    + labs(title="MME Rate in Florida vs Rhode Island Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing Deaths in Florida vs Rhode Island
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "Deaths"), method="lm", color="red"
+    )
+    + geom_smooth(
+        Rhode_island_before_policy, aes("Year", "Deaths"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("Deaths")
+    + labs(title="Deaths in Florida vs Rhode Island Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing MME in Florida vs South Carolina
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "MME Rate"), method="lm", color="red"
+    )
+    + geom_smooth(
+        South_carolina_before_policy, aes("Year", "MME Rate"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("MME Rate")
+    + labs(title="MME Rate in Florida vs South Carolina Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing Deaths in Florida vs South Carolina
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "Deaths"), method="lm", color="red"
+    )
+    + geom_smooth(
+        South_carolina_before_policy, aes("Year", "Deaths"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("Deaths")
+    + labs(title="Deaths in Florida vs South Carolina Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing MME in Florida vs Georgia
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "MME Rate"), method="lm", color="red"
+    )
+    + geom_smooth(
+        Georgia_before_policy, aes("Year", "MME Rate"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("MME Rate")
+    + labs(title="MME Rate in Florida vs Georgia Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
+    )
+    + theme_bw()
+)
+
+# comparing Deaths in Florida vs Georgia
+
+(
+    ggplot()
+    + geom_smooth(
+        before_policy_florida, aes("Year", "Deaths"), method="lm", color="red"
+    )
+    + geom_smooth(
+        Georgia_before_policy, aes("Year", "Deaths"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2010, linetype="dotted")
+    + xlab("Year")
+    + ylab("Deaths")
+    + labs(title="Deaths in Florida vs Georgia Before the Policy was made")
+    + scale_x_continuous(
+        breaks=[2006, 2007, 2008, 2009, 2010],  # , 2011, 2012, 2013, 2014, 2015],
+        limits=[2006, 2010],
     )
     + theme_bw()
 )
 
 #### Control State 2
 
-# Texas: Effective January 4, 2007
+#Texas: Effective January 4, 2007
 
 texas = df[df.STATE == "Texas"]  # subsetting for Texas
 
 before_policy_texas = texas[
     texas["Year"] < 2007
 ]  # subsetting the data before the the policy
-after_policy_texas = texas[
-    texas["Year"] >= 2007
-]  # a subset of the data after the policy was passed
 
 ## Drug Related Deaths in Texas before Policy passed
 
-(
-    ggplot()
-    + geom_smooth(before_policy_texas, aes("Year", "Deaths"), method="lm", color="red")
-    + geom_vline(xintercept=2007, linetype="dotted")
-    + scale_x_continuous(
-        breaks=[2004, 2005, 2006, 2007], limits=[2004, 2007]
-    )
-    + xlab("Year")
-    + ylab("Deaths")
-    + labs(title="Deaths in Texas Before the Policy was passed")
-    + theme_bw()
-)
 
-state = [
-    "West Virginia",
-    "New Hampshire",
-    "Kentucky",
-]  # using these states as control state for Texas
-con_state_1 = df[df.STATE.isin(state)]
-bf = con_state_1[con_state_1.Year < 2007]
+West_virginia = df[df.STATE == "West Virginia"]
+West_virginia_before_policy = West_virginia[West_virginia.Year < 2007]
 
-# Deaths in Control states
 
-(
-    ggplot()
-    + geom_smooth(bf, aes("Year", "Deaths"), method="lm", color="blue")
-    + geom_vline(xintercept=2007, linetype="dotted")
-    + scale_x_continuous(
-        breaks=[2004, 2005, 2006, 2007], limits=[2004, 2007]
-    )
-    + xlab("Year")
-    + ylab("Deaths")
-    + labs(title="Deaths in Control States Before the Policy was passed")
-    + theme_bw()
-)
+New_Hampshire = df[df.STATE == "New Hampshire"]
+New_Hampshire_before_policy = New_Hampshire[New_Hampshire.Year < 2007]
 
-# Comparing Deaths in Texas vs Control States
+Kentucky = df[df.STATE == "Kentucky"]
+Kentucky_before_policy = Kentucky[Kentucky.Year < 2007]
+
+# Comparing Deaths in Texas vs West Virginia
 
 (
     ggplot()
     + geom_smooth(before_policy_texas, aes("Year", "Deaths"), method="lm", color="red")
-    + geom_smooth(bf, aes("Year", "Deaths"), method="lm", color="blue")
-    + geom_vline(xintercept=2007, linetype="dotted")
-    + scale_x_continuous(
-        breaks=[2004, 2005, 2006, 2007], limits=[2004, 2007]
+    + geom_smooth(
+        West_virginia_before_policy, aes("Year", "Deaths"), method="lm", color="blue"
     )
+    + geom_vline(xintercept=2007, linetype="dotted")
+    + scale_x_continuous(breaks=[2004, 2005, 2006, 2007], limits=[2004, 2007])
     + xlab("Year")
     + ylab("Deaths")
-    + labs(title="Death Rate in Texas vs Control States")
+    + labs(title="Deaths in Texas vs West Virginia Before the Policy was passed")
     + theme_bw()
 )
 
-#### Control State 3
+# Comparing Deaths in Texas vs New Hampshire
 
-# Washington (the State, not Washington, DC), Effective Jan 2, 2012.
+(
+    ggplot()
+    + geom_smooth(before_policy_texas, aes("Year", "Deaths"), method="lm", color="red")
+    + geom_smooth(
+        New_Hampshire_before_policy, aes("Year", "Deaths"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2007, linetype="dotted")
+    + scale_x_continuous(breaks=[2004, 2005, 2006, 2007], limits=[2004, 2007])
+    + xlab("Year")
+    + ylab("Deaths")
+    + labs(title="Deaths in Texas vs New Hampshire Before the Policy was passed")
+    + theme_bw()
+)
+
+# Comparing Deaths in Texas vs Kentucky
+
+(
+    ggplot()
+    + geom_smooth(before_policy_texas, aes("Year", "Deaths"), method="lm", color="red")
+    + geom_smooth(
+        Kentucky_before_policy, aes("Year", "Deaths"), method="lm", color="blue"
+    )
+    + geom_vline(xintercept=2007, linetype="dotted")
+    + scale_x_continuous(breaks=[2004, 2005, 2006, 2007], limits=[2004, 2007])
+    + xlab("Year")
+    + ylab("Deaths")
+    + labs(title="Deaths in Texas vs Kentucky Before the Policy was passed")
+    + theme_bw()
+)
 
 washington = df[df.STATE == "Washington"]
 
 before_policy_washington = washington[
     washington.Year < 2012
 ]  # subsetting the data before the the policy
-after_policy_washington = washington[
-    washington.Year >= 2012
-]  # a subset of the data after the policy was passed
 
 # Shipments in Washington
 
@@ -244,82 +353,7 @@ after_policy_washington = washington[
     + theme_bw()
 )
 
-# Deaths in Washington
+#### Control State 3
 
-(
-    ggplot()
-    + geom_smooth(
-        before_policy_washington, aes("Year", "Deaths"), method="lm", color="red"
-    )
-    + geom_vline(xintercept=2012, linetype="dotted")
-    + scale_x_continuous(
-        breaks=[2006, 2007, 2008, 2009, 2010, 2011, 2012],
-        limits=[2006, 2012],
-    )
-    + xlab("Year")
-    + ylab("MME Rate")
-    + labs(title="MME Rate in Washington Before the Policy was made")
-    + theme_bw()
-)
+# Washington (the State, not Washington, DC), Effective Jan 2, 2012.
 
-state_list_1 = [
-    "Utah",
-    "Tennessee",
-    "Maine",
-]  # using these states as control state for Florida
-con_state_2 = df[df.STATE.isin(state_list_1)]
-bf_2 = con_state_2[con_state_2.Year < 2012]
-
-# shipments in Control States 
-
-(
-    ggplot()
-    + geom_smooth(bf_2, aes("Year", "MME Rate"), method="lm", color="blue")
-    + geom_vline(xintercept=2012, linetype="dotted")
-    + xlab("Year")
-    + ylab("MME Rate")
-    + labs(title="MME Rate in Control States Before the Policy was made")
-    + theme_bw()
-)
-
-# Shipments in Washington vs Control states
-
-(
-    ggplot()
-    + geom_smooth(
-        before_policy_washington, aes("Year", "MME Rate"), method="lm", color="red"
-    )
-    + geom_smooth(bf_2, aes("Year", "MME Rate"), method="lm", color="blue")
-    + geom_vline(xintercept=2012, linetype="dotted")
-    + scale_x_continuous(
-        breaks=[2006, 2007, 2008, 2009, 2010, 2011, 2012],
-        limits=[2006, 2012],
-    )
-    + xlab("Year")
-    + ylab("MME Rate")
-    + labs(
-        title="MME Rate in Washington Vs Control States Before the Policy was made"
-    )
-    + theme_bw()
-)
-
-# Comparing Deaths in Washington vs Control States 
-
-(
-    ggplot()
-    + geom_smooth(
-        before_policy_washington, aes("Year", "Deaths"), method="lm", color="red"
-    )
-    + geom_smooth(bf_2, aes("Year", "Deaths"), method="lm", color="blue")
-    + geom_vline(xintercept=2012, linetype="dotted")
-    + scale_x_continuous(
-        breaks=[2006, 2007, 2008, 2009, 2010, 2011, 2012],
-        limits=[2006, 2012],
-    )
-    + xlab("Year")
-    + ylab("MME Rate")
-    + labs(
-        title="Deaths in Washington Vs Control States Before the Policy was made"
-    )
-    + theme_bw()
-)

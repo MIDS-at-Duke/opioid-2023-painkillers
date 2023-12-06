@@ -353,7 +353,6 @@ before_policy_washington = washington[
     + theme_bw()
 )
 
-#### Control State 3
+### Control State 3
 
-# Washington (the State, not Washington, DC), Effective Jan 2, 2012.
-
+Washington (the State, not Washington, DC), Effective Jan 2, 2012.

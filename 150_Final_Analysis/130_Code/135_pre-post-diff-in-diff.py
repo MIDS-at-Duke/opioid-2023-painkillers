@@ -23,7 +23,7 @@ pd.set_option("mode.copy_on_write", True)
 
 
 # import the final dataset for plotting
-merged = pd.read_csv("final_dataset.csv")
+merged = pd.read_csv("100_Final_Dataset/110_Final_Data/final_dataset.csv")
 
 merged.head()
 
@@ -319,7 +319,7 @@ print(unique_years_post_texas)
 
 # ### Diff-in-Diff Analysis (First Version Selected Control)
 
-# > This is the first version of selected control states that have similar GDP, medium income, spending, poverty rates as the treatment state. 
+# > This is the first version of selected control states that have similar GDP, medium income, spending, poverty rates as the treatment state.
 
 # In[797]:
 
@@ -565,7 +565,7 @@ combined_df_post = combined_df[combined_df["Year"] > 2006]
 
 # ### Diff-in-Diff Analysis (Second Version Selected Controls)
 
-# > This is the second version of the selected control states with similar pre-treatment trends as the treatment state. 
+# > This is the second version of the selected control states with similar pre-treatment trends as the treatment state.
 
 # In[803]:
 
@@ -835,7 +835,7 @@ combined_df_post = combined_df[combined_df["Year"] > 2006]
 
 # ### Diff-in-Diff (Third Version Selected Controls)
 
-# > This is the third version of selected control states that have similar GDP, medium income, spending, poverty rates as the treatment state as well as similar pre-treatment trends as the treatment state. 
+# > This is the third version of selected control states that have similar GDP, medium income, spending, poverty rates as the treatment state as well as similar pre-treatment trends as the treatment state.
 
 # In[815]:
 
@@ -1150,4 +1150,3 @@ combined_df_post = combined_df[combined_df["Year"] > 2006]
         legend_position="top", legend_box="horizontal", legend_title=element_blank()
     )
 )
-

@@ -20,10 +20,6 @@ df_Florida = df[
             [
                 "Florida",
                 "Ohio",
-                "Pennsylvania",
-                "Tennessee",
-                "Georgia",
-                "North Carolina",
                 "Arkansas",
                 "Oklahoma",
             ]
@@ -49,10 +45,6 @@ df_Florida = df[
             [
                 "Florida",
                 "Ohio",
-                "Pennsylvania",
-                "Tennessee",
-                "Georgia",
-                "North Carolina",
                 "Arkansas",
                 "Oklahoma",
             ]
@@ -83,10 +75,6 @@ df_Florida = df[
             [
                 "Florida",
                 "Ohio",
-                "Pennsylvania",
-                "Tennessee",
-                "Georgia",
-                "North Carolina",
                 "Arkansas",
                 "Oklahoma",
             ]
@@ -117,11 +105,8 @@ df_death_rate = df[
             [
                 "Washington",
                 "Massachusetts",
-                "Colorado",
                 "Maryland",
                 "Oregon",
-                "Connecticut",
-                "New Jersey",
             ]
         )
     )
@@ -148,11 +133,8 @@ df_mme_rate = df[
             [
                 "Washington",
                 "Massachusetts",
-                "Colorado",
                 "Maryland",
                 "Oregon",
-                "Connecticut",
-                "New Jersey",
             ]
         )
     )
@@ -183,13 +165,9 @@ df_death_rate = df[
         df["STATE"].isin(
             [
                 "Texas",
-                "Georgia",
-                "Indiana",
                 "Alabama",
                 "Tennessee",
-                "Ohio",
                 "North Carolina",
-                "Louisiana",
             ]
         )
     )
@@ -215,13 +193,9 @@ df_mme_rate = df[
         df["STATE"].isin(
             [
                 "Texas",
-                "Georgia",
-                "Indiana",
                 "Alabama",
                 "Tennessee",
-                "Ohio",
                 "North Carolina",
-                "Louisiana",
             ]
         )
     )

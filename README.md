@@ -1,4 +1,4 @@
-# README: Analysis of Opioid Prescription Regulations in Florida, Texas, and Washington
+# Analysis of Opioid Prescription Regulations in Florida, Texas, and Washington
 
 ## Project Overview
 This repository presents an analysis of the effectiveness of opioid prescription regulations in Florida, Texas, and Washington. The study is particularly relevant to government officials and stakeholders concerned with the opioid crisis.
